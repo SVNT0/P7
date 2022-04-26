@@ -10,23 +10,23 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      Post.associate = function (models) {
-        models.Post.belongsTo(models.user, {
+      post.associate = function (models) {
+        models.post.belongsTo(models.user, {
           onDelete: "cascade",
           foreignerKey: {
             name: 'userid',
             allowNull: false
           }
         });
-        models.Post.hasMany(models.like, {
+        models.post.hasMany(models.like, {
           foreignKey: 'postid',
         })
-        models.Post.hasMany(models.commentary, {
+        models.post.hasMany(models.commentary, {
           foreignKey: 'postid',
         })
       };
     
-      Post.addScope('formatted_date', {
+      post.addScope('formatted_date', {
         attributes: {
           include: [[sequelize.fn('date_format', sequelize.col('date_publication'), '%Y-%m-%d %H:%i'), 'formatted_date']]
         }

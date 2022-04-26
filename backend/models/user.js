@@ -10,15 +10,15 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      User.associate = function (models) {
-        models.User.hasMany(models.post, {
+      user.associate = function (models) {
+        models.user.hasMany(models.post, {
           foreignKeys: {
             allowNull: false,
           }
         });
       };
       // define association here
-      User.addScope('nopassword', {
+      user.addScope('nopassword', {
         attributes: { exclude: ['password'] }
       });
     }

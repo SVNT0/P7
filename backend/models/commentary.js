@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Comment.associate = function (models) {
-        models.Comment.belongsTo(models.User, {
+        models.commentary.belongsTo(models.user, {
           onDelete: "cascade",
           foreignKey: 'userId'
         })
